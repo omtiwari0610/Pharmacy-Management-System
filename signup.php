@@ -1,3 +1,6 @@
+<?php
+   include("connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +40,13 @@
             height:4vh;
             border-radius: 20px;
         }
+        .pass1{
+            width:28vw;
+            position: relative;
+            left:2vw; 
+            height:4vh;
+            border-radius: 20px;
+        }
         .signup{
             position: absolute;
             bottom: 5vh;
@@ -58,26 +68,30 @@
         }
         .three{
             position:absolute;
-            top:20vh;
+            top:18vh;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <form method="POST">
-            <div class="header"><h1>Sign in</h1></div>
+    <div class="container" >
+        <form action = "new.php" method = "POST">
+            <div class="header"><h1>Sign up</h1></div>
             <div class="txt">Create account</div><br><br>  
             <div class="three">
             <div class = "box1">
-              <input class="email" type = "email" placeholder="Email">
+              <input class="email" name = "email" type = "email" placeholder="Email" required>
             </div>
             <br>
             <div class="box2">
-                <input class="pass" type = "password" placeholder="Password">
+                <input class="pass" name = "pass" type = "password" placeholder="Password" required>
+            </div>
+            <br>
+            <div class="box2">
+                <input class="pass1" name = "prof" type = "text" placeholder="Profession" required>
             </div>
             </div>
             <div class="button">
-                <button class="signup">Sign in</button>
+                <input type = "submit" class="signup" name = "submit" value="Sign up">
             </div>
         </form>
     </div>

@@ -1,3 +1,40 @@
+<?php
+
+  if(isset($_POST['submit'])){
+    include("connection.php");
+    $email = $_POST['email'];
+    $password = $_POST['pass'];
+   
+    $sql = "select * from signup where email = '$email'";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if($row){
+        if($row["password"] == $password){
+            if (strcasecmp($row["profession"], "Customer") == 0){
+                header("Location: customer.php");
+                exit();
+            }
+            elseif(strcasecmp($row["profession"], "Pharmacist") == 0){
+                header("Location: pharma.php");
+            }
+        }        
+        else{
+            echo '<script>
+            alert("Invalid credentials!");
+            window.location.href = "signin.php";
+            </script>';
+        }
+    }
+    else{
+        echo '<script>
+            alert("User does not exist! \nCreate an account first!");
+            window.location.href = "signin.php";
+            </script>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,20 +101,20 @@
 </head>
 <body>
     <div class="container">
-        <form method="POST">
+        <form action = "signin.php" method="POST">
             <div class="header"><h1>Sign in</h1></div>
-            <div class="txt">Create account</div><br><br>  
+            <div class="txt">Verify account</div><br><br>  
             <div class="three">
             <div class = "box1">
-              <input class="email" type = "email" placeholder="Email">
+              <input class="email" name = "email" type = "email" placeholder="Email">
             </div>
             <br>
             <div class="box2">
-                <input class="pass" type = "password" placeholder="Password">
+                <input class="pass" name = "pass" type = "password" placeholder="Password">
             </div>
             </div>
             <div class="button">
-                <button class="signup">Sign in</button>
+                <input type = "submit"  class="signup" name = "submit" value="Sign in">
             </div>
         </form>
     </div>
