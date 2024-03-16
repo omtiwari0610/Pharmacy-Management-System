@@ -1,1 +1,0 @@
-echo "AA gaya bhai!";

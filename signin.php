@@ -12,11 +12,11 @@
     if($row){
         if($row["password"] == $password){
             if (strcasecmp($row["profession"], "Customer") == 0){
-                header("Location: customer.php");
+                header("Location: user.html");
                 exit();
             }
             elseif(strcasecmp($row["profession"], "Pharmacist") == 0){
-                header("Location: pharma.php");
+                header("Location: pharma.html");
             }
         }        
         else{
@@ -29,8 +29,10 @@
     else{
         echo '<script>
             alert("User does not exist! \nCreate an account first!");
-            window.location.href = "signin.php";
+            window.location.href = "signup.php";
+            header("Location: signup.php");
             </script>';
+        
     }
 }
 ?>
@@ -82,7 +84,7 @@
             width:15vw;
             color:white;
             background-color: blue;
-            border-radius: 10px;
+            border-radius:60px;
         }  
         /* form{
             height:33vh;
