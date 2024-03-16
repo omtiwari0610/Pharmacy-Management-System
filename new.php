@@ -1,4 +1,5 @@
 <?php
+echo "Hello"
   include("connection.php");
   if(isset($_POST['submit'])){
     $email = $_POST['email'];
