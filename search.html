@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+        margin: 0;
+        padding: 0;
+}
+body{
+        background-color: rgb(232, 231, 231);
+}
+.navbar{
+    height:10vh;
+    width:100vw;
+    background-color: maroon;
+}
+ul li{
+   list-style: none;
+   display: inline-block;
+}
+ul li a{
+    display: inline-block;
+    text-align: center;
+    width:33.1vw;
+    height:10vh;
+}
+i{
+    position:relative;
+    top:4vh;
+    color:white;
+}
+.active {
+  background-color: red; /* Change color for active item */
+}
+img{
+    position:absolute;
+    top:1vh;
+    right:0vw;
+    height:8vh;
+    border-radius: 50px;
+    cursor:pointer;
+}
+.content a{
+    text-decoration: none;
+    display:none;
+    position: absolute;
+    right:0.1vw;
+    top : 9vh;
+    color: black;
+    background-color: white;
+}
+.logout:hover  .content a{
+    display: block;
+}
+.logout{
+    height:5vh;
+    position: absolute;           
+    top: 0vh;
+    right:0vw;
+    width: 4vw;
+}
+.searchbar{
+    margin: 0vh 10vw;
+    width:80vw;
+    height:10vh;
+    border-radius: 10px;
+}
+</style>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a  href = "search.html"><i class="fa-solid fa-magnifying-glass">  Search medicines </i></a></li>
+            <li><a href = "view.php"><i class="fa-solid fa-cart-shopping"> Cart </i></a></li>
+            <li><a href = "update.php"><i class="fa-solid fa-file-invoice"> Bills </i></a></li>
+        </ul>
+   </div>
+        <div class="logout">
+            <img src="user.jpg">
+            <div class="content">
+                <a href="signin.php">LOGOUT</a>
+            </div>
+        </div>
+        <br><br>
+        <input name = "search" class = "searchbar" placeholder="  Search medicine" >
+        <script src="https://kit.fontawesome.com/518283c99e.js" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                 var currentLocation = window.location.pathname;
+                 currentLocation = currentLocation.replace(/^\/+|\/+$/g, '');
+                 console.log("Current Location:", currentLocation);
+                 var navLinks = document.querySelectorAll(".navbar ul li a");
+                 navLinks.forEach(function(navLink) {
+                     var linkHref = navLink.getAttribute("href");
+                     console.log("Link Href:", linkHref);
+                     if (linkHref === currentLocation) {
+                         console.log("Match Found!");
+                         navLink.classList.add("active");
+                     }
+                 });
+             });
+         </script>
+</body>
+</html>
